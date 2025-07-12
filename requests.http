@@ -2,5 +2,24 @@ POST http://localhost:8080/api/users
 Content-Type: application/json
 
 {
-  "name": "Benjamin"
+  "name": "Benjamin",
+  "password": "xxxxxx",
+  "email": "ridgesben1864@gmail.com",
+  "latitude": -37.897388,
+  "longitude": 145.101901
 }
+###
+POST http://localhost:8080/api/courts
+Content-Type: application/json
+
+{
+  "name": "Oakleigh Rec",
+  "latitude": -37.893193,
+  "longitude": 145.097654
+}
+
+###
+GET http://localhost:8080/api/users/da3b581d-1ab7-4fe2-8f6c-565863f7ac52
+
+###
+GET http://localhost:8080/api/courts/nearby?lat=-37.81&lng=145.12&limit=2

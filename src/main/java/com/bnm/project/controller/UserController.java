@@ -1,4 +1,4 @@
-package com.bnm.project.controllers;
+package com.bnm.project.controller;
 
 import com.bnm.project.model.UserEntity;
 import com.bnm.project.repository.UserRepository;
@@ -22,7 +22,7 @@ public class UserController {
         return ResponseEntity.ok(userRepository.save(userEntity));
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable String id) {
         return userRepository.findById(id)
                 .map(ResponseEntity::ok)

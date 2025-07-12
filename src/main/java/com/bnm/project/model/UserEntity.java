@@ -27,12 +27,22 @@ public class UserEntity {
     @Setter
     private String email;
 
+    @Getter
+    @Setter
+    private double latitude;
+
+    @Getter
+    @Setter
+    private double longitude;
+
     public UserEntity(){
 
     }
-    public UserEntity(String name, String password, String email) {
+    public UserEntity(String name, String password, String email, double latitude, double longitude) {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }
