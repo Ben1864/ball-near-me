@@ -23,3 +23,14 @@ GET http://localhost:8080/api/users/da3b581d-1ab7-4fe2-8f6c-565863f7ac52
 
 ###
 GET http://localhost:8080/api/courts/nearby?lat=-37.81&lng=145.12&limit=2
+
+###
+POST http://localhost:8080/api/games
+Content-Type: application/json
+
+{
+  "hostUserId": "da3b581d-1ab7-4fe2-8f6c-565863f7ac52",
+  "courtId": "a93aa3ca-deef-4a76-bfc1-89f1910807bd"
+}
+###
+GET http://localhost:8080/api/games/36d51659-b0dd-443c-8858-17e41d5f5bcc/host

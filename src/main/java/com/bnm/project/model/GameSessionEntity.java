@@ -5,7 +5,12 @@ import lombok.Setter;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Node("GameSession")
 public class GameSessionEntity {
@@ -17,17 +22,51 @@ public class GameSessionEntity {
 
     @Getter
     @Setter
-    private String hostUserId;
+    @Relationship(type = "HOSTED_BY", direction = Relationship.Direction.OUTGOING)
+    private UserEntity hostUser;
 
     @Getter
     @Setter
-    private String courtId;
+    private List<UserEntity> players = new ArrayList<>();
+
+    @Getter
+    @Setter
+    @Relationship(type = "HOSTED_AT", direction = Relationship.Direction.OUTGOING)
+    private CourtEntity court;
+
+    @Getter
+    @Setter
+    private LocalDateTime startTime;
+
+    @Getter
+    @Setter
+    private LocalDateTime endTime;
 
     public GameSessionEntity() {}
 
-    public GameSessionEntity(String hostUserId, String courtId) {
-        this.hostUserId = hostUserId;
-        this.courtId = courtId;
+    public GameSessionEntity(UserEntity hostUser, CourtEntity court) {
+        this.hostUser = hostUser;
+        this.court = court;
+        startTime = LocalDateTime.now();
+        endTime = LocalDateTime.now().plusHours(1);
+    }
+
+    public GameSessionEntity(UserEntity hostUser, CourtEntity court, LocalDateTime startTime) {
+        this.hostUser = hostUser;
+        this.court = court;
+        this.startTime = startTime;
+        this.endTime = startTime.plusHours(1);
+    }
+
+    public GameSessionEntity(UserEntity hostUser, CourtEntity court, LocalDateTime startTime, LocalDateTime endTime) {
+        this.hostUser = hostUser;
+        this.court = court;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public void addPlayer(UserEntity newPlayer){
+        this.players.add(newPlayer);
     }
 
 }
