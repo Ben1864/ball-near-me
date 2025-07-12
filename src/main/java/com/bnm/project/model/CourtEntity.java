@@ -21,12 +21,18 @@ public class CourtEntity {
 
     @Getter
     @Setter
-    private String location;
+    private double latitude;
+
+    @Getter
+    @Setter
+    private double longitude;
+
 
     public CourtEntity() {}
 
-    public CourtEntity(String name, String location) {
+    public CourtEntity(String name, double latitude, double longitude) {
         this.name = name;
-        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }
