@@ -14,7 +14,8 @@ public class UserClientConfig extends ClientConfig {
 
     @Bean
     public UserClient userClient() {
-        RestClient restClient = createRestClient();
-        return createHTTPClient(UserClient.class, restClient);
+        String baseURL = "http://localhost:8081";
+        RestClient client = createRestClient(baseURL);
+        return createHTTPClient(UserClient.class, client);
     }
 }
