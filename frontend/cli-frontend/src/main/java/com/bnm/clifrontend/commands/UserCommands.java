@@ -35,7 +35,6 @@ public class UserCommands {
         String location = reader.readLine("Enter your location: ");
 
         GoogleGeocodingResponse response = geocodingClient.geocode(location, apiKey);
-        System.out.println("Geocoding response: " + response);
         double latitude = response.results().get(0).geometry().location().lat();
         double longitude = response.results().get(0).geometry().location().lng();
 
