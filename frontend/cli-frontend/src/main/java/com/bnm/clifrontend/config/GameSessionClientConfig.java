@@ -14,7 +14,8 @@ public class GameSessionClientConfig extends ClientConfig{
 
     @Bean
     public GameSessionClient gameSessionClient() {
-        RestClient client = createRestClient();
+        String baseURL = "http://localhost:8081";
+        RestClient client = createRestClient(baseURL);
         return createHTTPClient(GameSessionClient.class, client);
     }
 

@@ -15,7 +15,8 @@ public class CourtClientConfig extends ClientConfig {
 
     @Bean
     public CourtClient courtClient() {
-        RestClient client = createRestClient();
+        String baseURL = "http://localhost:8081";
+        RestClient client = createRestClient(baseURL);
         return createHTTPClient(CourtClient.class, client);
     }
 }
