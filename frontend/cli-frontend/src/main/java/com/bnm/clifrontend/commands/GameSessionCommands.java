@@ -15,7 +15,6 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
-import javax.print.DocFlavor;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -45,11 +44,11 @@ public class GameSessionCommands {
         LineReader reader = LineReaderBuilder.builder().terminal(terminal).build();
 
         System.out.println("Leave empty to set at now");
-        String startTimeInput = reader.readLine("Enter start date/time (yyyy-MM-dd HH:mm): ");
+        String startTimeInput = reader.readLine("Enter start date/time (HH:MM DD-MM-YYYY): ");
         System.out.println("Leave empty to set as in 1 hour from now");
-        String endTimeInput = reader.readLine("Enter end date/time (yyyy-MM-dd HH:mm): ");
+        String endTimeInput = reader.readLine("Enter end date/time (HH:MM DD-MM-YYYY): ");
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy ");
 
         LocalDateTime startTime;
         if (startTimeInput == null || startTimeInput.isBlank()) {

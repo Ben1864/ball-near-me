@@ -1,5 +1,4 @@
-###
-
+### Add user node
 POST http://localhost:8081/api/users
 Content-Type: application/json
 
@@ -10,10 +9,13 @@ Content-Type: application/json
   "latitude": -37.897388,
   "longitude": 145.101901
 }
-###
+### Get user by email
 GET http://localhost:8081/api/users/email/ridgesben1864@gmail.com
 
-###
+### Get user by id
+GET http://localhost:8081/api/users/da3b581d-1ab7-4fe2-8f6c-565863f7ac52
+
+### Add court node
 POST http://localhost:8081/api/courts
 Content-Type: application/json
 
@@ -23,22 +25,21 @@ Content-Type: application/json
   "longitude": 145.097654
 }
 
-###
+### Get court by id
 GET http://localhost:8081/api/courts/a93aa3ca-deef-4a76-bfc1-89f1910807bd
 
-###
-GET http://localhost:8081/api/users/da3b581d-1ab7-4fe2-8f6c-565863f7ac52
-
-###
+### Get top 2 closest courts to lat = -37.81 and lng = 145.12
 GET http://localhost:8081/api/courts/nearby?lat=-37.81&lng=145.12&limit=2
 
-###
+### Add game session
 POST http://localhost:8081/api/games
 Content-Type: application/json
 
 {
-  "hostUserId": "da3b581d-1ab7-4fe2-8f6c-565863f7ac52",
-  "courtId": "a93aa3ca-deef-4a76-bfc1-89f1910807bd"
+  "hostUserId": "2ad693ad-3051-4e8c-9b2f-15d0d16367a8",
+  "courtId": "16810fd6-0ea2-4c1f-b1a1-1f9cda4aaaa7",
+  "startTime": "2025-07-13T19:57:22.324974000",
+  "endTime": "2025-07-13T20:57:22.324974000"
 }
-###
-GET http://localhost:8081/api/games/36d51659-b0dd-443c-8858-17e41d5f5bcc/host
+### Get game session host
+GET http://localhost:8081/api/games/e2538088-e181-45ae-8b20-5dfabd919e77/host

@@ -2,7 +2,6 @@ package com.bnm.clifrontend.commands;
 
 import com.bnm.clifrontend.client.GeocodingClient;
 import com.bnm.clifrontend.client.UserClient;
-import com.bnm.clifrontend.model.GameSessionEntity;
 import com.bnm.clifrontend.model.GoogleGeocodingResponse;
 import com.bnm.clifrontend.model.UserEntity;
 import org.jline.reader.LineReader;

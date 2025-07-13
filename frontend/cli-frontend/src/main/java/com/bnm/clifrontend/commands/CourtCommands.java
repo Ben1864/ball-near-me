@@ -22,24 +22,20 @@ public class CourtCommands {
     private final Terminal terminal;
     private final GeocodingClient geocodingClient;
     private final String apiKey;
-    private final AuthState authState;
-    private final UserClient userClient;
 
 
-    public CourtCommands(CourtClient courtClient, Terminal terminal, GeocodingClient geocodingClient, String apiKey, AuthState authState, UserClient userClient) {
+    public CourtCommands(CourtClient courtClient, Terminal terminal, GeocodingClient geocodingClient, String apiKey) {
         this.courtClient = courtClient;
         this.terminal = terminal;
         this.geocodingClient = geocodingClient;
         this.apiKey = apiKey;
-        this.authState = authState;
-        this.userClient = userClient;
     }
 
     @ShellMethod(key = "show-all-courts", value = "Show all courts")
     public String  allCourts() {
-        List<CourtEntity> courts = courtClient.getCourts();
+        List<CourtEntity> allCourts = courtClient.getCourts();
         StringBuilder sb = new StringBuilder();
-        for (CourtEntity court : courts) {
+        for (CourtEntity court : allCourts) {
             sb.append(court.toString());
             sb.append("\n");
         }
