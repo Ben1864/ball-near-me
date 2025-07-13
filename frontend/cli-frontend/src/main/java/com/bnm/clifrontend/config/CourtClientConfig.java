@@ -8,21 +8,16 @@ import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
-public class CourtClientConfig {
+public class CourtClientConfig extends ClientConfig {
 
-    private final RestClient.Builder restClientBuilder;
 
     public CourtClientConfig(RestClient.Builder restClientBuilder) {
-        this.restClientBuilder = restClientBuilder;
+        super(restClientBuilder);
     }
 
     @Bean
     public CourtClient courtClient() {
-        RestClient restClient = restClientBuilder.baseUrl("http://localhost:8081").build();
-
-        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient)).build();
-
-        return factory.createClient(CourtClient.class);
-
+        RestClient client = createRestClient();
+        return createHTTPClient(CourtClient.class, client);
     }
 }
