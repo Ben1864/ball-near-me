@@ -22,9 +22,16 @@ public class UserController {
         return ResponseEntity.ok(userRepository.save(userEntity));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable String id) {
         return userRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<UserEntity> getUserByEmail(@PathVariable String email) {
+        return userRepository.findUserByEmail(email)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
