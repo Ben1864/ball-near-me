@@ -24,6 +24,9 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:8081/api/courts/a93aa3ca-deef-4a76-bfc1-89f1910807bd
+
+###
 GET http://localhost:8081/api/users/da3b581d-1ab7-4fe2-8f6c-565863f7ac52
 
 ###

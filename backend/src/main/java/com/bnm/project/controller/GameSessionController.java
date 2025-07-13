@@ -36,13 +36,13 @@ public class GameSessionController {
 
     @PostMapping
     public ResponseEntity<GameSessionEntity> addGameSession(@RequestBody GameSessionRequest req) {
-        Optional<UserEntity> hostUser = userRepository.findById(req.hostUserId);
+        Optional<UserEntity> hostUser = userRepository.findById(req.hostId);
         Optional<CourtEntity> court = courtRepository.findById(req.courtId);
 
-
-        if (hostUser.isEmpty() && court.isEmpty()) {
+        if (hostUser.isEmpty() || court.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
+
         GameSessionEntity gameSessionEntity = new GameSessionEntity(
                 hostUser.get(),
                 court.get(),
@@ -63,9 +63,9 @@ public class GameSessionController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<GameSessionEntity> addPlayer(@PathVariable String id, @RequestBody UserEntity newPlayer) {
+    public ResponseEntity<GameSessionEntity> addPlayer(@PathVariable String id, @RequestBody UserEntity user) {
         return gameSessionRepository.findById(id).map(gameSessionEntity -> {
-            gameSessionEntity.addPlayer(newPlayer);
+            gameSessionEntity.addPlayer(user);
             return ResponseEntity.ok(gameSessionRepository.save(gameSessionEntity));
         }).orElse(ResponseEntity.notFound().build());
     }

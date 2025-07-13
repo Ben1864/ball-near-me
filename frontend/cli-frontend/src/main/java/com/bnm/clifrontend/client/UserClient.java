@@ -1,11 +1,12 @@
 package com.bnm.clifrontend.client;
 
+import com.bnm.clifrontend.model.GameSessionEntity;
 import com.bnm.clifrontend.model.UserEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.PatchExchange;
 import org.springframework.web.service.annotation.PostExchange;
-import org.springframework.web.service.annotation.PutExchange;
 
 public interface UserClient {
 
@@ -15,6 +16,9 @@ public interface UserClient {
     @GetExchange("/api/users/email/{email}")
     UserEntity getUserByEmail(@PathVariable("email") String email);
 
-    @GetExchange("/api/user/id/{id}")
+    @GetExchange("/api/users/id/{id}")
     UserEntity getUserById(@PathVariable("id") String id);
+
+    @PatchExchange("/api/users/{id}/games")
+    void addGame(@PathVariable("id") String id, @RequestBody GameSessionEntity game);
 }

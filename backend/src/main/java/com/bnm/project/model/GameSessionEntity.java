@@ -27,6 +27,7 @@ public class GameSessionEntity {
 
     @Getter
     @Setter
+    @Relationship(type = "PLAYING_IN", direction = Relationship.Direction.INCOMING)
     private List<UserEntity> players = new ArrayList<>();
 
     @Getter

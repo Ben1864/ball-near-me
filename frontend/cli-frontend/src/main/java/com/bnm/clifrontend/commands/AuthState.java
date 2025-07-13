@@ -18,6 +18,10 @@ public class AuthState {
     public String getUserId() {
         return userId;
     }
+
+    public boolean isLoggedIn() {
+        return userLoggedIn;
+    }
     public void login(String userId) {
         this.userLoggedIn = true;
         this.userId = userId;

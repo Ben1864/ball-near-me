@@ -1,11 +1,15 @@
 package com.bnm.project.controller;
 
+import com.bnm.project.model.GameSessionEntity;
 import com.bnm.project.model.UserEntity;
 import com.bnm.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.service.annotation.PatchExchange;
+import org.springframework.web.service.annotation.PostExchange;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -23,10 +27,21 @@ public class UserController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<UserEntity> getUserById(@PathVariable String id) {
-        return userRepository.findById(id)
+    public ResponseEntity<UserEntity> getUserById(@PathVariable("id") String userId) {
+        return userRepository.findById(userId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PatchExchange ("/{id}/games")
+    public ResponseEntity<UserEntity> addGame(@PathVariable("id") String userId, @RequestBody GameSessionEntity gameSessionEntity) {
+        Optional<UserEntity> optUser = userRepository.findById(userId);
+        if(optUser.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        UserEntity userEntity = optUser.get();
+        userEntity.addGameSession(gameSessionEntity);
+        return ResponseEntity.ok(userRepository.save(userEntity));
     }
 
     @GetMapping("/email/{email}")
