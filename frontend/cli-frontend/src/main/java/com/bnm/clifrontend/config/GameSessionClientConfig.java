@@ -2,8 +2,10 @@ package com.bnm.clifrontend.config;
 
 import com.bnm.clifrontend.client.GameSessionClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
 
+@Configuration
 public class GameSessionClientConfig extends ClientConfig{
 
     public GameSessionClientConfig(RestClient.Builder restClientBuilder) {
