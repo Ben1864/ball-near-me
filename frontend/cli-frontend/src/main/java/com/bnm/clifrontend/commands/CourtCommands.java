@@ -1,10 +1,9 @@
 package com.bnm.clifrontend.commands;
 
-import com.bnm.clifrontend.client.CourtClient;
-import com.bnm.clifrontend.client.GeocodingClient;
-import com.bnm.clifrontend.client.UserClient;
-import com.bnm.clifrontend.model.CourtEntity;
-import com.bnm.clifrontend.model.GoogleGeocodingResponse;
+import com.bnm.clifrontend.clients.CourtClient;
+import com.bnm.clifrontend.clients.GeocodingClient;
+import com.bnm.clifrontend.models.CourtEntity;
+import com.bnm.clifrontend.models.GoogleGeocodingResponse;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
@@ -12,7 +11,6 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

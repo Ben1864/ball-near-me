@@ -1,11 +1,11 @@
 package com.bnm.clifrontend.commands;
 
-import com.bnm.clifrontend.client.CourtClient;
-import com.bnm.clifrontend.client.GameSessionClient;
-import com.bnm.clifrontend.client.UserClient;
-import com.bnm.clifrontend.model.GameSessionEntity;
-import com.bnm.clifrontend.model.GameSessionRequest;
-import com.bnm.clifrontend.model.UserEntity;
+import com.bnm.clifrontend.clients.CourtClient;
+import com.bnm.clifrontend.clients.GameSessionClient;
+import com.bnm.clifrontend.clients.UserClient;
+import com.bnm.clifrontend.models.GameSessionEntity;
+import com.bnm.clifrontend.models.GameSessionRequest;
+import com.bnm.clifrontend.models.UserEntity;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
