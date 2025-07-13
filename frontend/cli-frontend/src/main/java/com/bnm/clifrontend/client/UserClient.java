@@ -14,4 +14,7 @@ public interface UserClient {
 
     @GetExchange("/api/users/email/{email}")
     UserEntity getUserByEmail(@PathVariable("email") String email);
+
+    @GetExchange("/api/user/id/{id}")
+    UserEntity getUserById(@PathVariable("id") String id);
 }

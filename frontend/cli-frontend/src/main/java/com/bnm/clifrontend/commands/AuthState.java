@@ -1,5 +1,6 @@
 package com.bnm.clifrontend.commands;
 
+import org.springframework.shell.Availability;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,8 +12,8 @@ public class AuthState {
 
     public AuthState(boolean loggedInUser, String userId) {}
 
-    public boolean isUserLoggedIn() {
-        return userLoggedIn;
+    public Availability isUserLoggedIn() {
+        return userLoggedIn ? Availability.available() : Availability.unavailable("User is not logged in");
     }
     public String getUserId() {
         return userId;
