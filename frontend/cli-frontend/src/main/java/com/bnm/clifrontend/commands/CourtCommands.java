@@ -9,6 +9,7 @@ import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class CourtCommands {
         StringBuilder sb = new StringBuilder();
         for (CourtEntity court : courts) {
             sb.append(court.toString());
+            sb.append("\n");
         }
         return sb.toString();
     }
@@ -52,4 +54,11 @@ public class CourtCommands {
         CourtEntity newCourt = courtClient.addCourt(new CourtEntity(null, name, latitude, longitude));
         return  newCourt.toString();
     }
+
+    @ShellMethod(key = "get-court", value = "Get court by court id")
+    public String  getCourtById(@PathVariable("id") String id) {
+        CourtEntity court = courtClient.getCourtById(id);
+        return court.toString();
+    }
+
 }
